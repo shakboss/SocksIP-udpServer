@@ -618,7 +618,7 @@ new_user(){
 
 download_udpServer(){
 	msg -nama "        ${a30:-Descargando binario UDPserver} ....."
-	if wget -O /usr/bin/udpServer 'https://bitbucket.org/iopmx/udprequestserver/downloads/udpServer' &>/dev/null ; then
+	if wget -O /usr/bin/udpServer 'https://bitbucket.org/iopmx/udprequestserver/downloads/udpServerv2.1' &>/dev/null ; then
 		chmod +x /usr/bin/udpServer
 		msg -verd 'OK'
 	else
