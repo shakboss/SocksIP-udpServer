@@ -104,9 +104,18 @@ def main():
             add_user(username, password, expire_date)
 
         elif sub_action == "del":
-            if len(sys.argv) < 4:
-                print("Error: Username is required to delete.")
-                sys.exit(1)
+    if len(sys.argv) < 4:
+        print("Error: Username is required to delete.")
+        sys.exit(1)
+
+    username = sys.argv[3]
+    try:
+        # Run the user deletion command in the container
+        subprocess.run(["docker", "exec", "-it", CONTAINER_NAME, "userdel", username], check=True)
+        print(f"User '{username}' deleted successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error: Failed to delete user '{username}'. Details: {e}")
+        sys.exit(1)
 
             username = sys.argv[3]
             delete_user(username)
